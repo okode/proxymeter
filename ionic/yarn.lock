@@ -48,6 +48,10 @@
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-4.1.0.tgz#603610a9b79636d991e612316b14c3c2d3e9bcf3"
 
+"@ionic-native/ibeacon@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/ibeacon/-/ibeacon-4.1.0.tgz#5d04359292955a53091d27d3f1dd5e86f5e8d5b7"
+
 "@ionic-native/splash-screen@4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/splash-screen/-/splash-screen-4.1.0.tgz#9d83d9171088e3eaefdcd3e1a7b25b01431f5935"
@@ -1090,6 +1094,10 @@ cookie@0.3.1:
 cookiejar@^2.0.6:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/cookiejar/-/cookiejar-2.1.1.tgz#41ad57b1b555951ec171412a81942b1e8200d34a"
+
+cordova-plugin-ibeacon@3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-ibeacon/-/cordova-plugin-ibeacon-3.4.0.tgz#33e4e17994171d1fb34b1d7febd306e1d2244a15"
 
 core-js@^2.4.0:
   version "2.4.1"
