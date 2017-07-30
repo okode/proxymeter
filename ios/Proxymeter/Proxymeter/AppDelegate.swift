@@ -12,9 +12,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
 
     var window: UIWindow?
+    var deviceManager = ESTDeviceManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let temperatureNotification = ESTTelemetryNotificationTemperature { (temperature) in
+            print("Current temperature: \(temperature.temperatureInCelsius) C")
+        }
+        deviceManager.register(forTelemetryNotification: temperatureNotification)
         return true
     }
 
