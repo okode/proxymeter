@@ -3,6 +3,9 @@ Proxymeter
 
 Proximity App based on Estimote beacons.
 
+iOS App
+=======
+
 Requirements
 ------------
 
@@ -19,3 +22,13 @@ $ pod install
 ```
 
 Open `Proxymeter.xcworkspace` and run project in real device (iOS 10+). Enter and exit from beacon region and expect local notifications in foreground & background.
+
+Ionic App
+=========
+
+Requirements
+------------
+
+* Ionic
+
+
