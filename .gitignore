@@ -3,3 +3,5 @@ Pods
 *.xcworkspace
 xcuserdata
 node_modules
+platforms
+plugins
