@@ -12,32 +12,32 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
 
     var window: UIWindow?
-    var deviceManager = ESTDeviceManager()
     var beaconManager = ESTBeaconManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        /*
-        let notifier = ESTTelemetryNotificationAmbientLight { (notification) in
-            print("Current value: \(notification.ambientLightLevelInLux)")
-        }
-        deviceManager.register(forTelemetryNotification: notifier)
-        */
+        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .sound, .badge], categories: nil))
         
         beaconManager.requestAlwaysAuthorization()
         beaconManager.delegate = self
-        beaconManager.startRangingBeacons(in: CLBeaconRegion(proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, major: 62703, minor: 48774, identifier: "myRegion"))
+        beaconManager.startMonitoring(for: CLBeaconRegion(proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, major: 62703, minor: 48774, identifier: "myRegion"))
         
         return true
     }
     
-    func beaconManager(_ manager: Any, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-        print("Beacon/s ranged")
-    }
-    
-    func beaconManager(_ manager: Any, monitoringDidFailFor region: CLBeaconRegion?, withError error: Error) {
-        print("Monitoring failed")
+    func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
+        let notification = UILocalNotification()
+        notification.alertBody = "Beacon Enter"
+        notification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.shared.presentLocalNotificationNow(notification)
     }
 
+    func beaconManager(_ manager: Any, didExitRegion region: CLBeaconRegion) {
+        let notification = UILocalNotification()
+        notification.alertBody = "Beacon Exit"
+        notification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.shared.presentLocalNotificationNow(notification)
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
