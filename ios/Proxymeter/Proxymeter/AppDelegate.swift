@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
@@ -15,7 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     var beaconManager = ESTBeaconManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .sound, .badge], categories: nil))
+        
+        UNUserNotificationCenter.current().getNotificationSettings { (notificationSettings) in
+            switch notificationSettings.authorizationStatus {
+            case .notDetermined:
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
+                    if let error = error {
+                        print("Request Authorization Failed (\(error), \(error.localizedDescription))")
+                    }
+                }
+            case .authorized:
+                break
+            case .denied:
+                print("Application Not Allowed to Display Notifications")
+                break
+            }
+        }
         
         beaconManager.requestAlwaysAuthorization()
         beaconManager.delegate = self
@@ -25,17 +41,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     }
     
     func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
-        let notification = UILocalNotification()
-        notification.alertBody = "Beacon Enter"
-        notification.soundName = UILocalNotificationDefaultSoundName
-        UIApplication.shared.presentLocalNotificationNow(notification)
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "Beacon Enter"
+        notificationContent.subtitle = "Entered region where there's a beacon"
+        notificationContent.body = "Your device has entered a region where there's some beacon."
+        notificationContent.sound = UNNotificationSound.default()
+        let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+        let notificationRequest = UNNotificationRequest(identifier: "BEACON_ENTER", content: notificationContent, trigger: notificationTrigger)
+        UNUserNotificationCenter.current().add(notificationRequest) { (error) in
+            if let error = error {
+                print("Unable to Add Notification Request (\(error), \(error.localizedDescription))")
+            }
+        }
     }
 
     func beaconManager(_ manager: Any, didExitRegion region: CLBeaconRegion) {
-        let notification = UILocalNotification()
-        notification.alertBody = "Beacon Exit"
-        notification.soundName = UILocalNotificationDefaultSoundName
-        UIApplication.shared.presentLocalNotificationNow(notification)
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "Beacon Exit"
+        notificationContent.subtitle = "Exited region where there was a beacon"
+        notificationContent.body = "Your device has exited a region where there was some beacon."
+        notificationContent.sound = UNNotificationSound.default()
+        let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+        let notificationRequest = UNNotificationRequest(identifier: "BEACON_EXIT", content: notificationContent, trigger: notificationTrigger)
+        UNUserNotificationCenter.current().add(notificationRequest) { (error) in
+            if let error = error {
+                print("Unable to Add Notification Request (\(error), \(error.localizedDescription))")
+            }
+        }
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
