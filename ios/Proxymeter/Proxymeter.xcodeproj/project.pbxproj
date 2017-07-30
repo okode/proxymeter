@@ -24,6 +24,7 @@
 		3E99A1851F2E2CE70085B448 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E99A1881F2E2CE70085B448 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E99A18A1F2E2CE70085B448 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E99A1901F2E2D820085B448 /* ObjCBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		B583F07DB76AC7A44E4A0606 /* Pods_Proxymeter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proxymeter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2EE243F54C0C09DB6A54C1E /* Pods-Proxymeter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proxymeter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Proxymeter/Pods-Proxymeter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,6 +62,7 @@
 		3E99A17D1F2E2CE70085B448 /* Proxymeter */ = {
 			isa = PBXGroup;
 			children = (
+				3E99A1901F2E2D820085B448 /* ObjCBridge.h */,
 				3E99A17E1F2E2CE70085B448 /* AppDelegate.swift */,
 				3E99A1801F2E2CE70085B448 /* ViewController.swift */,
 				3E99A1821F2E2CE70085B448 /* Main.storyboard */,
@@ -285,6 +287,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_NAME}/ObjCBridge.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -327,6 +330,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_NAME}/ObjCBridge.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -379,6 +383,7 @@
 				3E99A18F1F2E2CE70085B448 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
