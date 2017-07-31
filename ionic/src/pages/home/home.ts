@@ -10,7 +10,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, private ibeacon: IBeacon) { }
 
-  ngInitialize() {
+  ngOnInit() {
     this.ibeacon.requestAlwaysAuthorization();
     
     let delegate = this.ibeacon.Delegate();
