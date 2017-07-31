@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { IBeacon } from '@ionic-native/ibeacon';
 
@@ -8,7 +8,9 @@ import { IBeacon } from '@ionic-native/ibeacon';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private ibeacon: IBeacon) { }
+  status = '';
+
+  constructor(private ibeacon: IBeacon, private zone: NgZone) { }
 
   start() {
     this.ibeacon.requestAlwaysAuthorization()
@@ -17,12 +19,12 @@ export class HomePage {
     
     let delegate = this.ibeacon.Delegate();
     delegate.didEnterRegion().subscribe(
-      data => console.log('Beacon Enter'),
+      data => this.zone.run(() => this.status = 'Beacon Present'),
       error => console.error(error)
     );
 
     delegate.didExitRegion().subscribe(
-      data => console.log('Beacon Exit'),
+      data => this.zone.run(() => this.status = ''),
       error => console.error(error)
     );
 
