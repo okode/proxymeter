@@ -77,9 +77,13 @@
         <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <config-file parent="CFBundleLocalizations" platform="ios" target="*-Info.plist">
-            <key>UIBackgroundModes</key>
             <array>
-                <string>location</string>
+                <dict>
+                    <key>UIBackgroundModes</key>
+                    <array>
+                        <string>location</string>
+                    </array>
+                </dict>
             </array>
         </config-file>
     </platform>
