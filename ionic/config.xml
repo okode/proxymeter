@@ -83,7 +83,7 @@
         </config-file>
     </platform>
     <engine name="android" spec="~6.2.3" />
-    <engine name="ios" spec="https://github.com/apache/cordova-ios.git" />
+    <engine name="ios" spec="https://github.com/apache/cordova-ios.git#8edd13aaee16d6996a4560a74d17798437b42c6f" />
     <plugin name="com.unarin.cordova.beacon" spec="3.4.0" />
     <plugin name="cordova-custom-config" spec="4.0.2" />
     <plugin name="cordova-plugin-console" spec="1.0.5" />
