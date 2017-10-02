@@ -2,12 +2,12 @@
   "ios": {
     "debug": {
       "codeSignIdentity": "iPhone Developer",
-      "provisioningProfile": "4da0d37b-b13a-45c9-aa2f-5838a1cf2874",
+      "provisioningProfile": "9f8471a0-9591-4cab-9e3d-ce81e9f6c702",
       "developmentTeam": "ZQ4562D4C2"
     },
     "release": {
       "codeSignIdentity": "iPhone Developer",
-      "provisioningProfile": "4da0d37b-b13a-45c9-aa2f-5838a1cf2874",
+      "provisioningProfile": "9f8471a0-9591-4cab-9e3d-ce81e9f6c702",
       "developmentTeam": "ZQ4562D4C2"
     }
   }
