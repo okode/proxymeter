@@ -81,6 +81,9 @@
                 <string>location</string>
             </array>
         </config-file>
+        <config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
+            <string>This app would like to scan for iBeacons always and when in use.</string>
+        </config-file>
     </platform>
     <engine name="android" spec="6.3.0" />
     <engine name="ios" spec="https://github.com/apache/cordova-ios.git#cf424b46fb37c00395c1ee9a249280efee5f65b5" />
